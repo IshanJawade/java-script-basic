@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>personal Expense </title>
+    <style>
+        body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        }        
+    </style>
+    
+</head>
+<body>
+    <button id="btnCounter">Increament</button> </button>
+    <script>
+        //get number which starts from zero 
+        let counter = 0;
+        
+        //fuction to increament the number 
+        function counterIncreament(){
+        counter = counter + 1;
+        console.log(counter);
+        }
+        
+        //listen to the click
+        const element = document.querySelector("#btnCounter");
+        
+        
+        // Listen to click event
+        element.addEventListener("click", counterIncreament, false);
+
+    </script>
+</body>
+</html>
