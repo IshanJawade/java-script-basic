@@ -15,23 +15,35 @@
     
 </head>
 <body>
-    <button id="btnCounter">Increament</button> </button>
+    <input  id="inputAmount" type="text"></input>
+    <button id="btnAddExpense">+</button> </button>
     <script>
-        //get number which starts from zero 
-        let counter = 0;
-        
-        //fuction to increament the number 
-        function counterIncreament(){
-        counter = counter + 1;
-        console.log(counter);
+        // init value of expense at zero
+        let totalExpense = 0;
+
+        // OnBTn click add inputAmount to total expense
+        function addExpenseToTotal(){   
+            // Read inpute value from inputAmount
+            const inputElement = document.querySelector("#inputAmount");
+            const textAmount = inputElement.value;
+            // console.log({ textAmount }); // this {} will convert var into object
+
+            // convert it to number
+            const expense = parseInt(textAmount, 10);
+            // console.log({ expense })
+
+            // add that value to total expense
+            totalExpense = totalExpense + expense;
+            console.log({ totalExpense });
         }
+
         
-        //listen to the click
-        const element = document.querySelector("#btnCounter");
+        // Connect Button here with ID!!!!
+        const element = document.querySelector("#btnAddExpense");
         
         
         // Listen to click event
-        element.addEventListener("click", counterIncreament, false);
+        element.addEventListener("click", addExpenseToTotal, false);
 
     </script>
 </body>
