@@ -7,6 +7,7 @@
     <style>
         body{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -15,11 +16,17 @@
     
 </head>
 <body>
+    <h1 id="headingTotal">0</h1>
     <input  id="inputAmount" type="text"></input>
     <button id="btnAddExpense">+</button> </button>
     <script>
+        // get the heading element
+        const headingEl = document.querySelector("#headingTotal");
         // init value of expense at zero
         let totalExpense = 0;
+
+        // set the heading element to totalExpense
+        // headingEl.textContent = totalExpense;  // I dont know why we have to do it two times
 
         // OnBTn click add inputAmount to total expense
         function addExpenseToTotal(){   
@@ -35,6 +42,9 @@
             // add that value to total expense
             totalExpense = totalExpense + expense;
             console.log({ totalExpense });
+
+            // set the heading element to totalExpense
+            headingEl.textContent = totalExpense;
         }
 
         
