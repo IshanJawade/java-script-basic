@@ -16,35 +16,41 @@
     
 </head>
 <body>
-    <h1 id="headingTotal">0</h1>
+    <h1>Your Total</h1>
+    <h2 id="headingTotal">0</h2>
+    <input id="inputDesc" type="text"></input>
     <input  id="inputAmount" type="text"></input>
     <button id="btnAddExpense">+</button> </button>
     <script>
-        // get the heading element
+        // get the reffrence to the heading element
         const headingEl = document.querySelector("#headingTotal");
+
+        // get refference to the Desc element
+        const inputDescEl = document.querySelector("#inputDesc");
+
+        // reffrence to the inpute amount
+        const inputElement = document.querySelector("#inputAmount");
+
         // init value of expense at zero
         let totalExpense = 0;
-
-        // set the heading element to totalExpense
-        // headingEl.textContent = totalExpense;  // I dont know why we have to do it two times
 
         // OnBTn click add inputAmount to total expense
         function addExpenseToTotal(){   
             // Read inpute value from inputAmount
-            const inputElement = document.querySelector("#inputAmount");
+            
             const textAmount = inputElement.value;
             // console.log({ textAmount }); // this {} will convert var into object
-
+            const textDesc = inputDescEl.value;
             // convert it to number
             const expense = parseInt(textAmount, 10);
             // console.log({ expense })
 
             // add that value to total expense
             totalExpense = totalExpense + expense;
-            console.log({ totalExpense });
-
+            
             // set the heading element to totalExpense
             headingEl.textContent = totalExpense;
+            console.log({ textDesc, expense });
         }
 
         
