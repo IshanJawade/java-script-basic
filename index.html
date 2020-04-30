@@ -34,9 +34,12 @@
         // init value of expense at zero
         let totalExpense = 0;
 
+        // allExpenses at one place
+        const allExpenses = [];
+
         // OnBTn click add inputAmount to total expense
         function addExpenseToTotal(){   
-            // Read inpute value from inputAmount
+            const expenseItem = {};
             
             const textAmount = inputElement.value;
             // console.log({ textAmount }); // this {} will convert var into object
@@ -48,9 +51,17 @@
             // add that value to total expense
             totalExpense = totalExpense + expense;
             
+            expenseItem.desc = textDesc;
+            expenseItem.amonut = expense;
+            // console.log({ expenseItem })
+
+            allExpenses.push(expenseItem);
+            console.clear();
+            console.table(allExpenses);
+
             // set the heading element to totalExpense
             headingEl.textContent = totalExpense;
-            console.log({ textDesc, expense });
+            //console.log({ textDesc, expense });
         }
 
         
