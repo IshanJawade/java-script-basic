@@ -26,6 +26,9 @@
         // get the reffrence to the heading element
         const headingEl = document.querySelector("#headingTotal");
 
+        // get refference to the button
+        const element = document.querySelector("#btnAddExpense");
+
         // get refference to the Desc element
         const inputDescEl = document.querySelector("#inputDesc");
 
@@ -56,7 +59,7 @@
             totalExpense = totalExpense + expense;
             
             expenseItem.desc = textDesc;
-            expenseItem.amonut = expense;
+            expenseItem.amount = expense;
             // console.log({ expenseItem })
 
             allExpenses.push(expenseItem);
@@ -65,25 +68,28 @@
             const someText = `The expense of this month is: ${totalExpense}`;
             headingEl.textContent = someText;
             
-            // Show the table here
-            const data1 = allExpenses[0];
-            const data2 = allExpenses[1];
+            // # Show the table here this is for Hard coding...
+            // const data1 = allExpenses[0];
+            // const data2 = allExpenses[1];
             
-            const data1Text = `${data1.amonut} :: ${data1.desc}`;
-            const data2Text = `${data2.amonut} :: ${data2.desc}`;
+            // const data1Text = `${data1.amount} :: ${data1.desc}`;
+            // const data2Text = `${data2.amount} :: ${data2.desc}`;
 
-            const tableText = `
-                <div> ${data1Text} </div>
-                <div> ${data2Text} </div>
-            ` 
+            // const tableText = `
+            //     <div> ${data1Text} </div>
+            //     <div> ${data2Text} </div>
+            // ` 
 
-            expenseTableEl.innerHTML = tableText;
+            const allExpensesHTML = allExpenses.map(expense => {
+                return `<div> ${expense.desc }::${ expense.amount} </div>`
+            });
+            
+            const joinedAllExpensesHTML = allExpensesHTML.join();
+
+            console.log(joinedAllExpensesHTML);
+
+            expenseTableEl.innerHTML = joinedAllExpensesHTML; 
         }
-
-        
-        // Connect Button here with ID!!!!
-        const element = document.querySelector("#btnAddExpense");
-        
         
         // Listen to click event
         element.addEventListener("click", addExpenseToTotal, false);
