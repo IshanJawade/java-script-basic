@@ -21,6 +21,7 @@
     <input id="inputDesc" type="text"></input>
     <input  id="inputAmount" type="text"></input>
     <button id="btnAddExpense">+</button> </button>
+    <div id="expenseTable"></div>
     <script>
         // get the reffrence to the heading element
         const headingEl = document.querySelector("#headingTotal");
@@ -28,8 +29,11 @@
         // get refference to the Desc element
         const inputDescEl = document.querySelector("#inputDesc");
 
-        // reffrence to the inpute amount
+        // get reffrence to the inpute amount
         const inputElement = document.querySelector("#inputAmount");
+
+        // get reff to expense table
+        const expenseTableEl = document.querySelector("#expenseTable");
 
         // init value of expense at zero
         let totalExpense = 0;
@@ -56,12 +60,24 @@
             // console.log({ expenseItem })
 
             allExpenses.push(expenseItem);
-            console.clear();
-            console.table(allExpenses);
-
+        
             // set the heading element to totalExpense
-            headingEl.textContent = totalExpense;
-            //console.log({ textDesc, expense });
+            const someText = `The expense of this month is: ${totalExpense}`;
+            headingEl.textContent = someText;
+            
+            // Show the table here
+            const data1 = allExpenses[0];
+            const data2 = allExpenses[1];
+            
+            const data1Text = `${data1.amonut} :: ${data1.desc}`;
+            const data2Text = `${data2.amonut} :: ${data2.desc}`;
+
+            const tableText = `
+                <div> ${data1Text} </div>
+                <div> ${data2Text} </div>
+            ` 
+
+            expenseTableEl.innerHTML = tableText;
         }
 
         
