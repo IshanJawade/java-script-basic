@@ -1,2 +1,2 @@
 ### java-script-basic
-My first java script code 
+My first java script Project 
