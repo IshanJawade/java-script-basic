@@ -111,13 +111,7 @@
             headingEl.textContent = someText;
 
             // Printing on webpage
-            const allExpensesHTML = allExpenses.map(expense => createListItem(expense));
-                
-            const joinedAllExpensesHTML = allExpensesHTML.join();
-
-            console.log(joinedAllExpensesHTML);
-
-            expenseTableEl.innerHTML = joinedAllExpensesHTML; 
+            renderList(allExpenses);
         }
         
         element.addEventListener("click", addExpenseToTotal, false);
@@ -132,19 +126,27 @@
         }
         // delete Item
         function deleteItem(dateValue){
-            console.log("Function delete Item is called !", dateValue);
+            const newArr = [];
+            console.log("Item successfully deleted from the list");
             
             for (let i=0; i<allExpenses.length; i++){
-                if (allExpenses[i].moment.valueOf() == dateValue){
-                    console.log("Item Found", allExpenses[i])
+                if (allExpenses[i].moment.valueOf() !== dateValue){
+                    newArr.push(allExpenses[i]);
                 }
-                // console.log(allExpenses[i].moment.valueOf());
+                renderList(newArr);
+                // console.log(newArr);
             }
         }
 
         
 
         // View layer
+        function renderList(arrOfList){
+            const allExpensesHTML = arrOfList.map(expense => createListItem(expense));
+            const joinedAllExpensesHTML = allExpensesHTML.join();
+            expenseTableEl.innerHTML = joinedAllExpensesHTML; 
+        }
+
         function createListItem({ desc, amount, moment }) {
             return`
                 <li class="list-group-item d-flex justify-content-between">
